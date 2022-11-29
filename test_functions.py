@@ -1,6 +1,7 @@
 import pytest
 from functions import *
 
+# openFile tests
 @pytest.mark.parametrize("file", ["Not a file", "testing.txt"])
 
 def test_openFile(file):
@@ -14,7 +15,27 @@ def test_openFileOutput(capsys, file, result):
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout.strip() == result
 
+# numbers test
 @pytest.mark.parametrize("num1,num2, results", [(6, 3, 2), (6, 0, None), ("cool", "o", None), (6.2, 2, 3.1)])
 
 def test_numbers(num1, num2, results):
     assert numbers(num1, num2) == results
+
+# displayItem test
+    
+## takes in a Python list
+## attempts to display the item at the index provided
+def displayItem(numbers, index):
+    print("Your item at", index, "index is", numbers[index])
+
+def test_display():
+    assert displayItem([2,4,6,8], 1) == None
+
+def test_display2():
+    assert displayItem([1,3,5,7], 3) == None
+
+def test_display3():
+    assert displayItem([4,8,12,16,20], 2) == None
+
+def test_display4():
+    assert displayItem([10,20,30,40,50,60], 4) == None
