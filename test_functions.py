@@ -20,31 +20,6 @@ def test_openFileOutput(capsys, file, result):
 
 def test_numbers(num1, num2, results):
     assert numbers(num1, num2) == results
-
-## takes in two points
-## finds the distance between the points
-def dist(x1, y1, x2, y2):
-    try:
-        dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
-        dist = math.sqrt(dist)
-        return dist
-
-    except:
-        print("\nWrong type.")
-
-## takes in a string -- reverses it
-## then compares the two
-def isPalindrome(temp):
-    try:
-        test = temp[::-1]
-
-        if (test == temp):
-            return True
-
-        else:
-            return False
-    except:
-        print("\nWrong type.")
    
 # dist tests
 
@@ -92,12 +67,63 @@ def test_isPalindrome_working():
 def test_isPalindrome_working2():
     assert isPalindrome("pineapple") != True
     
-# displayItem test
+# divide tests
+
+def geninputs():
+    inputs = [9,3]
+
+    for item in inputs:
+        yield item
+
+GEN = geninputs()
+
+def test_divide(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN))
+    assert divide() == None
+
+
+
+def geninputs2():
+    inputs = [9,3.5]
+
+    for item in inputs:
+        yield item
+
+GEN2 = geninputs2()
+
+def test_divide2(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN2))
+    assert divide() == None
+
+
+
+def geninputs3():
+    inputs = ["Hello",3.5]
+
+    for item in inputs:
+        yield item
+
+GEN3 = geninputs3()
+
+def test_divide3(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN3))
+    assert divide() == None
+
+# sq tests
+
+def test_sq():
+    assert sq(4)
+
+def test_sq2():
+    assert sq(15.5)
+
+def test_sq2():
+    assert sq("Hello")
+
+def test_sq4():
+    assert sq('a')
     
-## takes in a Python list
-## attempts to display the item at the index provided
-def displayItem(numbers, index):
-    print("Your item at", index, "index is", numbers[index])
+# displayItem test
 
 def test_display():
     assert displayItem([2,4,6,8], 1) == None
@@ -112,14 +138,6 @@ def test_display4():
     assert displayItem([10,20,30,40,50,60], 4) == None
 
 # greetUser tests  
-    
-## grabs user's name
-## greets them by their entire name
-## names should be strings
-def greetUser(first, middle, last):
-    print("Hello!")
-    print("Welcome to the program", first, middle, last)
-    print("Glad to have you!")
 
 def test_greet():
     assert greetUser("Collin", "Joseph", "McCranie") == None
