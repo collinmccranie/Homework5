@@ -5,7 +5,7 @@ import pytest
 ## names should be strings
 def greetUser(first, middle, last):
     print("Hello!")
-    print("Welcome to the program", first, middle, last)
+    print("Welcome to the program", str(first), str(middle), str(last))
     print("Glad to have you!")
 
 def test_greet():

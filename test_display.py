@@ -3,7 +3,8 @@ import pytest
 ## takes in a Python list
 ## attempts to display the item at the index provided
 def displayItem(numbers, index):
-    print("Your item at", index, "index is", numbers[index])
+    if (index == type(int)):
+        print("Your item at", int(index), "index is", list(numbers[index]))
 
 def test_display():
     assert displayItem([2,4,6,8], 1) == None
