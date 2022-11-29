@@ -3,14 +3,29 @@ import math
 ## opens a file in read mode
 ## filename received as a parameter
 def openFile(filename):
-    infile = open(filename, "r")
+    try:
+        infile = open(filename, "r")
 
-    print("File opened.")
+    except FileNotFoundError:
+        print("There is no file with that name.")
+
+    else:
+        print("File opened.")
 
 ## takes two numbers and returns
 ## the result of a division
 def numbers(num1, num2):
-    return num1 / num2
+    try:
+        result = num1 / num2
+
+    except TypeError:
+        print("Input must be two numbers.")
+
+    except ZeroDivisionError:
+        print("Cannot divide by 0.")
+
+    else:
+        return result
 
 ## takes in two points
 ## finds the distance between the points
