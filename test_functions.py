@@ -143,10 +143,10 @@ def test_greet():
     assert greetUser("Collin", "Joseph", "McCranie") == None
 
 def test_greet2():
-    assert greetUser("John", "Edward", "Doe") == None
+    assert greetUser(2, "Edward", "Doe") == None
 
 def test_greet3():
     assert greetUser("Jane", "Elizabeth", "Doe") == None
 
 def test_greet4():
-    assert greetUser("Jackson", "Chistopher", "Williams") == None
+    assert greetUser(1.0, "Chistopher", "Williams") == None
